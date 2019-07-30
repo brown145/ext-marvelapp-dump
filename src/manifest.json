@@ -15,7 +15,8 @@
 	}],
 	"permissions": [
 		"declarativeContent",
-		"downloads"
+		"downloads",
+		"storage"
 	],
 	"icons": {
 		"128": "icon-128.png"

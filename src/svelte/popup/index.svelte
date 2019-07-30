@@ -1,6 +1,6 @@
 <article>
 	<section id="body">
-		<AppBody images={images} previewSize={200} />
+		<AppBody images={images} previewSize={previewSize} />
 	</section>
 	<section id="footer">
 		<AppFooter name={name} />
@@ -20,6 +20,12 @@
 
 	let images = [];
 
+	let previewSize = 100;
+	browser.storage.sync.get(
+		{ previewSize: 100 },
+		options => previewSize = options.previewSize
+	);
+
 	const updateImages = newImages =>
 		images = newImages;
 
@@ -32,7 +38,7 @@
 
 <style>
 	article {
-			width: 800px;
+		width: 800px;
 	}
 
 	section {
