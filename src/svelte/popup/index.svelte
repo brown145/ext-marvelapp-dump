@@ -1,6 +1,6 @@
 <article>
 	<section id="body">
-		<AppBody images={images} />
+		<AppBody images={images} previewSize={200} />
 	</section>
 	<section id="footer">
 		<AppFooter name={name} />
@@ -11,10 +11,6 @@
 	export let name;
 
 	import { onMount } from 'svelte';
-
-	import 'sanitize.css';
-	import 'sanitize.css/forms.css';
-	import 'sanitize.css/typography.css';
 
 	import browser from '../../utils/browser';
 	import { activeTabQuery } from '../../utils/messaging';

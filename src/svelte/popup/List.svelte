@@ -12,7 +12,7 @@
 		disabled={selectedImages.length <= 0}
 		on:click={handleDownloadAllClick}
 	>
-		download {selectedImages.length} images
+		download {selectedImages.length} of {images.length} images
 	</button>
 </div>
 <div id="list-content">
@@ -28,7 +28,7 @@
 						data-imageid={image.uuid}
 						on:change={handleSelection}
 					>
-					<img width="100px" src="{image.thumbnail}" alt="{image.name}" />
+					<img width="{`${previewSize}px`}" src="{image.thumbnail}" alt="{image.name}" />
 					<div class="imageMeta">
 						<span class="name">{image.name}</span>
 						<span>{image.url}</span>
@@ -43,12 +43,11 @@
 </div>
 
 <script>
-	import 'sanitize.css';
-	import 'sanitize.css/typography.css';
 	import DownloadSVG from './DownloadSVG.svelte';
-	import browser from '../../utils/browser';
+	import downloadImage from '../../utils/download';
 
 	export let images;
+	export let previewSize;
 
 	let selectedImages = images.map(image => image.uuid);
 
@@ -74,17 +73,6 @@
 
 	const handleDownloadOneClick = event =>
 		downloadImage(images.find(image => image.uuid === event.currentTarget.dataset.imageid));
-
-	const getFileanme = ({ name }) => {
-		var d = new Date();
-		return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}_${d.getHours()}-${d.getMinutes()}__${name}`;
-	}
-
-	const downloadImage = (imageData) =>
-		browser.downloads.download({
-			url: imageData.url,
-			filename: getFileanme(imageData)
-		});
 </script>
 
 <style>
@@ -101,11 +89,6 @@
 	button {
 		cursor: pointer;
 	}
-	button:disabled {
-		color: #666;
-		background: #ccc;
-		border: #fff;
-	}
 
 	.name {
 		font-weight: bold;
@@ -113,6 +96,7 @@
 
 	.svgButton {
 		border: none;
+		background: none;
 	}
 
 	#list-controls {
@@ -145,6 +129,7 @@
 		border: 1px solid #fff;
 		border-right: none;
 		border-left: none;
+		margin-right: 5px;
 	}
 
 	#list-content ul>li.will-not-download {

@@ -1,6 +1,6 @@
 {#if images.length}
 	<div id="listContainer">
-		<List images={images} />
+		<List images={images} previewSize={previewSize} />
 	</div>
 {:else}
 	<div id="loadingContainer">
@@ -13,6 +13,7 @@
 	import List from './List.svelte';
 
 	export let images;
+	export let previewSize;
 </script>
 
 <style>

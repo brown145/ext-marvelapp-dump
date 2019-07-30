@@ -1,25 +1,25 @@
 {
-  "name": "Marvel Download",
-  "options_page": "options.html",
-  "background": {
-    "page": "background.html",
-    "persistent": false
-  },
-  "page_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon-34.png"
-  },
-  "content_scripts": [{
-    "matches": ["https://marvelapp.com/*"],
-    "js": ["content.bundle.js"]
-  }],
-  "permissions": [
-    "declarativeContent",
-    "downloads"
-  ],
-  "icons": {
-    "128": "icon-128.png"
-  },
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+	"name": "Marvel Download",
+	"options_page": "options.html",
+	"background": {
+		"page": "background.html",
+		"persistent": false
+	},
+	"page_action": {
+		"default_popup": "popup.html",
+		"default_icon": "icon-34.png"
+	},
+	"content_scripts": [{
+		"matches": ["https://marvelapp.com/*"],
+		"js": ["content.bundle.js"]
+	}],
+	"permissions": [
+		"declarativeContent",
+		"downloads"
+	],
+	"icons": {
+		"128": "icon-128.png"
+	},
+	"manifest_version": 2,
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

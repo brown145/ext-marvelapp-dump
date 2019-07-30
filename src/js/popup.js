@@ -1,3 +1,6 @@
+import 'sanitize.css';
+import 'sanitize.css/typography.css';
+
 import App from '../svelte/popup/index.svelte';
 const name = 'Marvel App Download Assistant';
 
