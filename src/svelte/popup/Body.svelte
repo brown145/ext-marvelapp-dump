@@ -1,20 +1,29 @@
-<button
-  disabled={images.length <= 0}
-  on:click={handleClick}
->
-  download {images.length} images
-</button>
+{#if images.length}
+	<div id="listContainer">
+		<List images={images} />
+	</div>
+{:else}
+	<div id="loadingContainer">
+		<Loading />
+	</div>
+{/if}
 
 <script>
-  import browser from '../../utils/browser';
+	import Loading from './Loading.svelte';
+	import List from './List.svelte';
 
-  export let images;
-
-	function handleClick(event) {
-    images.forEach(image =>
-      browser.downloads.download({
-        url: image.url
-      })
-    );
-  }
+	export let images;
 </script>
+
+<style>
+	#loadingContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 170px;
+	}
+	#listContainer {
+		display: flex;
+		justify-content: start;
+	}
+</style>

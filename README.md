@@ -1,10 +1,4 @@
-TODO
- # √ target only marvel App
- # get list of images to download
- # render list (small images?)
- # checkboxes for selection
- # download on click
- # move logo to footer
- # name and date for download
- # name for list
- # check v1 into git
+# Marvel App Download Assistant - Browser Extension
+Assets in marvel can change. Links to marvel can break. Linking to Marvel from Jira is a bad idea.
+
+You should download the images and attach to tickets instead. This extension makes that a tad easier.

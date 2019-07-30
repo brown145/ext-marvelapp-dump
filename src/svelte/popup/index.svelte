@@ -1,57 +1,63 @@
 <article>
-  <section>
-    <AppHeader name={name} />
-    <AppBody images={images} />
-  </section>
-  <section id="footer">
-    <AppFooter />
-  </section>
+	<section id="body">
+		<AppBody images={images} />
+	</section>
+	<section id="footer">
+		<AppFooter name={name} />
+	</section>
 </article>
 
 <script>
-  export let name;
+	export let name;
 
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-  import 'sanitize.css';
-  import 'sanitize.css/forms.css';
-  import 'sanitize.css/typography.css';
+	import 'sanitize.css';
+	import 'sanitize.css/forms.css';
+	import 'sanitize.css/typography.css';
 
-  import browser from '../../utils/browser';
-  import { activeTabQuery } from '../../utils/messaging';
+	import browser from '../../utils/browser';
+	import { activeTabQuery } from '../../utils/messaging';
 
-  import AppHeader from './Header.svelte';
-  import AppBody from './Body.svelte';
-  import AppFooter from './Footer.svelte';
+	import AppBody from './Body.svelte';
+	import AppFooter from './Footer.svelte';
 
-  let images = [];
+	let images = [];
 
-  const updateImages = newImages =>
-    images = newImages;
+	const updateImages = newImages =>
+		images = newImages;
 
-  onMount(async () => {
-    browser.tabs.query(activeTabQuery, function(tabs) {
-      browser.tabs.sendMessage(tabs[0].id, {type: 'getImages'}, updateImages);
-    });
-  });
+	onMount(async () => {
+		browser.tabs.query(activeTabQuery, function(tabs) {
+			browser.tabs.sendMessage(tabs[0].id, {type: 'getImages'}, updateImages);
+		});
+	});
 </script>
 
 <style>
-  article {
-      width: 600px;
-  }
+	article {
+			width: 800px;
+	}
 
-  section {
-    padding: 0px 5px;
-  }
+	section {
+		padding: 0px 5px;
+	}
 
-  #footer {
-    background-color: #ddd;
-    border-top: 1px solid #333;
-    color: #666;
-    margin-top: 10px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    text-align: right;
-  }
+	#body {
+		padding-bottom: 30px;
+	}
+
+	#footer {
+		background-color: #ddd;
+		border-top: 1px solid #333;
+		color: #666;
+		margin-top: 10px;
+		padding-bottom: 10px;
+		padding-top: 10px;
+		text-align: right;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
 </style>
