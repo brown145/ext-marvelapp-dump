@@ -1,12 +1,12 @@
 import browser from '../utils/browser';
 
-const fetchMarvelImages = () =>
-	fetch(`https://marvelapp.com/api/project-retrieve/${getProjectVanityId()}/`)
+export const fetchMarvelImages = projectId =>
+	fetch(`https://marvelapp.com/api/project-retrieve/${projectId}/`)
 		.then(res => res.json())
 		.then(parseData)
 		.catch(err => { console.warn('error', err) });
 
-const getProjectVanityId = () => {
+export const getProjectVanityId = () => {
 	// EX: https://marvelapp.com/XXXXX/screen/59327507
 	// assuming we want the XXXXX
 	let path = document.location.pathname;
@@ -18,4 +18,7 @@ const getProjectVanityId = () => {
 
 const parseData = data => Object.values(data.images);
 
-export default fetchMarvelImages;
+export default {
+	fetchMarvelImages,
+	getProjectVanityId
+};

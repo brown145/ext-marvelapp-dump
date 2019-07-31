@@ -1,9 +1,13 @@
 <div>
 	<h1>{name}</h1>
+	{#if (projectId)}
+		<span>project id: {projectId}</span>
+	{/if}
 </div>
 
 <script>
 	export let name;
+	export let projectId;
 </script>
 
 <style>
